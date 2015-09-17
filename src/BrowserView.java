@@ -230,8 +230,7 @@ public class BrowserView {
         	addFavorite();
         	enableButtons();
         }));
-        result.getChildren().add(makeButton("FavoriteFirstItem", event-> {
-        	showFavorite();
+        result.getChildren().add(makeComboBox("FavoriteFirstItem", event-> {
         	enableButtons();
         }));
         return result;
@@ -253,6 +252,14 @@ public class BrowserView {
         }
         result.setOnAction(handler);
         return result;
+    }
+    
+    private ComboBox makeComboBox (String property, EventHandler<ActionEvent> handler) {
+    	myFavorites.setOnAction(handler);
+        String label = myResources.getString(property);
+
+    	myFavorites.setPromptText(label);
+    	return myFavorites;
     }
 
     // make text field for input
